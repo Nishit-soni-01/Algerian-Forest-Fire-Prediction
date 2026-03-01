@@ -88,11 +88,13 @@
                     <button type="submit" class="btn btn-primary btn-lg">Predict FWI</button>
                 </div>
             </form>
-
             {% if result is not none %}
             <div class="result-box">
                 <h4>The Predicted FWI Value is:</h4>
-                <h2 class="text-danger">{{ result | round(2) }}</h2>
+                <h2 class="text-danger">
+                   {# Check if result can be rounded #}
+                   {{ result | round(2) if result is number else result }}
+                </h2>
             </div>
             {% endif %}
         </div>
